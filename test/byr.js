@@ -5,10 +5,10 @@ api.login('guest', '', function (e, data) {
     console.log(arguments);
 });
 
-api.queryUser('id', function (e, data) {
+api.queryUser('id', 'guest', '', function (e, data) {
     console.log(arguments);
 });
 
-api.logout(function (e, data) {
+api.logout('guest', '', function (e, data) {
     console.log(arguments);
 });
