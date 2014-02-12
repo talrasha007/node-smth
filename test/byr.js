@@ -1,14 +1,24 @@
-﻿//var api = new require('../index.js').getClient('api.byr.cn', '', 'your app key');
-var api = new require('../index.js').getClient('nforum.byr.edu.cn', '/byr/api', ''); // BYR Test Server
+﻿var co = require('co'),
+    assert = require('assert'),
 
-api.login('guest', '', function (e, user, auth) {
-    console.log(arguments);
+    Api = require('../lib/nforumApi.js'),
 
-    api.queryUser('id', auth, function (e, data) {
-        console.log(arguments);
-    });
+    nf = new Api('nforum.byr.edu.cn', '/byr/api');
+    // nf = new Api('api.byr.cn', '', 'your app key');
 
-    api.logout(auth, function (e, data) {
-        console.log(arguments);
-    });
+describe('nforum api', function () {
+    it('should work as expected.', co(function *() {
+        assert.equal(yield nf.login('guest', 'foobar'), true);
+
+        var auth = nf.getAuthToken();
+        nf.setAuthToken(auth);
+        assert.deepEqual(auth, nf.getAuthToken());
+
+        assert.equal(yield nf.logout(), true);
+
+        assert.equal((yield nf.queryUser()).id, 'guest');
+        assert.equal((yield nf.queryUser('TTL')).id, 'TTL');
+
+        yield nf.getFavorite(0);
+    }));
 });
