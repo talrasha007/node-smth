@@ -14,11 +14,13 @@ describe('nforum api', function () {
         nf.setAuthToken(auth);
         assert.deepEqual(auth, nf.getAuthToken());
 
-        assert.equal(yield nf.logout(), true);
-
         assert.equal((yield nf.queryUser()).id, 'guest');
         assert.equal((yield nf.queryUser('TTL')).id, 'TTL');
 
-        yield nf.getFavorite(0);
+        console.log(yield nf.getTop10());
+        console.log(yield nf.getBoard('skating'));
+        console.log(yield nf.getFavorite(0));
+
+        assert.equal(yield nf.logout(), true);
     }));
 });
