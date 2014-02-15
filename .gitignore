@@ -1,4 +1,5 @@
 lib-cov
+*.private.js
 *.seed
 *.log
 *.csv
