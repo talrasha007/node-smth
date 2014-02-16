@@ -1,18 +1,25 @@
 {
-    "name": "node-kbs",
-    "version": "0.0.3",
-    "description": "Library for KBS/nForum(such as bbs.byr.cn, newsmth.net).",
-    "keywords": ["KBS","nForum","bbs.byr.cn","newsmth.net"],
-    "homepage": "https://github.com/talrasha007/node-smth",
-    "author": "talrasha007 <talrasha007@gmail.com>",
-    "dependencies": {
-        "co": "latest",
-        "q": "latest",
-        "request" : ">=1.9.5",
-        "underscore" : ">=1.4.4",
-        "async": ">=0.2.3",
-        "iconv-lite": "latest"
-    },
-    "main": "index",
-    "engines": { "node": ">=0.11.0" }
+  "name": "node-kbs",
+  "version": "0.0.4",
+  "description": "Library for KBS/nForum(such as bbs.byr.cn, newsmth.net).",
+  "keywords": [
+    "KBS",
+    "nForum",
+    "bbs.byr.cn",
+    "newsmth.net"
+  ],
+  "homepage": "https://github.com/talrasha007/node-smth",
+  "author": "talrasha007 <talrasha007@gmail.com>",
+  "dependencies": {
+    "co": "~3.0.2",
+    "q": "~1.0.0",
+    "request": "~2.33.0",
+    "underscore": "~1.6.0",
+    "async": "~0.2.10",
+    "iconv-lite": "~0.2.11"
+  },
+  "main": "index",
+  "engines": {
+    "node": ">=0.11.0"
+  }
 }
