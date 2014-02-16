@@ -1,21 +1,10 @@
-﻿var nforumApi = require('./lib/nforumApi.js'),
-    webApi = require('./lib/webApi.js');
+﻿var wwwApi = require('./lib/wwwApi.js');
 
-exports.getClient = function (host, base, appkey, type) {
-    if (!type) switch (host) {
-        case 'api.byr.cn':
-        case 'nforum.byr.edu.cn':
-            type = 'nforum';
-            break;
-        case 'm.newsmth.net':
-            type = 'web';
-            break;
+exports.getClient = function (name) {
+    switch (name) {
+        case 'byr':
+            return new wwwApi('m.byr.cn', '', 'bbs.byr.cn', '');
+        case 'smth':
+            return new wwwApi('m.newsmth.net', '', 'www.newsmth.net', 'nForum');
     }
-
-    switch (type) {
-        case 'nforum':
-            return new nforumApi(host, base, appkey);
-        case 'web':
-            return new webApi(host, base);
-    }    
 };

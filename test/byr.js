@@ -3,24 +3,23 @@
 
     Api = require('../lib/nforumApi.js'),
 
-    nf = new Api('nforum.byr.edu.cn', '/byr/api');
-    // nf = new Api('api.byr.cn', '', 'your app key');
+    api = require('../').getClient('byr');
 
-describe('nforum api', function () {
+describe('api', function () {
     it('should work as expected.', co(function *() {
-        assert.equal(yield nf.login('guest', 'foobar'), true);
+        assert.equal(yield api.login('guest', 'foobar'), true);
 
-        var auth = nf.getAuthToken();
-        nf.setAuthToken(auth);
-        assert.deepEqual(auth, nf.getAuthToken());
+        var auth = api.getAuthToken();
+        api.setAuthToken(auth);
+        assert.deepEqual(auth, api.getAuthToken());
 
-        assert.equal((yield nf.queryUser()).id, 'guest');
-        assert.equal((yield nf.queryUser('TTL')).id, 'TTL');
+        assert.equal((yield api.queryUser()).id, 'guest');
+        assert.equal((yield api.queryUser('TTL')).id, 'TTL');
 
-        console.log(yield nf.getTop10());
-        console.log(yield nf.getBoard('skating'));
-        console.log(yield nf.getFavorite(0));
+        console.log(yield api.getTop10());
+        console.log(yield api.getBoard('Skating'));
+        console.log(yield api.getFavorite(0));
 
-        assert.equal(yield nf.logout(), true);
+        assert.equal(yield api.logout(), true);
     }));
 });
